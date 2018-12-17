@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Results";
+}
+<h2>@ViewBag.jobs.Count Result(s)</h2>
+
+@if (ViewBag.jobs != null)
+{
+
+    
+
+    // TODO #2 - Loop over jobs dictionary and display all job fields
+    //<ul>
+    //   @foreach (Dictionary<string, string> jobPost in ViewBag.jobs)
+    //  {   <li>
+    //     @foreach (KeyValuePair<string, string> jobDetail in jobPost)
+    //   {
+    //
+    //       @jobDetail.Key @jobDetail.Value
+    //}
+    //</li>
+    //}
+    //</ul>
+
+    <table class="job-listing">
+        @foreach (Dictionary<string, string> jobPost in ViewBag.jobs)
+        {
+            <tr>
+                @foreach (KeyValuePair<string, string> jobDetail in jobPost)
+                {
+                    <td>@jobDetail.Key:@jobDetail.Value </td>
+                }
+            </tr>
+        }
+    </table>
+
+}
+

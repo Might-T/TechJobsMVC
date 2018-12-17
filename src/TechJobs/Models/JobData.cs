@@ -6,7 +6,7 @@ using System.Text;
 namespace TechJobs.Models
 {
     class JobData
-    {
+    {   //   
         static List<Dictionary<string, string>> AllJobs = new List<Dictionary<string, string>>();
         static bool IsDataLoaded = false;
 
@@ -52,24 +52,26 @@ namespace TechJobs.Models
             LoadData();
 
             List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
-
-            foreach (Dictionary<string, string> row in AllJobs)
+            if (value != null )
             {
-
-                foreach (string key in row.Keys)
+                foreach (Dictionary<string, string> row in AllJobs)
                 {
-                    string aValue = row[key];
 
-                    if (aValue.ToLower().Contains(value.ToLower()))
+                    foreach (string key in row.Keys)
                     {
-                        jobs.Add(row);
+                        string aValue = row[key];
 
-                        // Finding one field in a job that matches is sufficient
-                        break;
+
+                        if (aValue.ToLower().Contains(value.ToLower()))
+                        {
+                            jobs.Add(row);
+
+                            // Finding one field in a job that matches is sufficient
+                            break;
+                        }
                     }
                 }
             }
-
             return jobs;
         }
 
@@ -155,7 +157,7 @@ namespace TechJobs.Models
 
             // Loop through the row string one char at a time
             foreach (char c in row.ToCharArray())
-            {
+            { 
                 if ((c == fieldSeparator && !isBetweenQuotes))
                 {
                     rowValues.Add(valueBuilder.ToString());
